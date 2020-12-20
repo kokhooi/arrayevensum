@@ -28,6 +28,9 @@ namespace ArraySum
 
             arr = new int[] { 2, 3, 4, 5, 6, 7, 8, 9, 10, 12 };
             Console.WriteLine(answerDisplay, string.Join(",", arr), calculateArraySum(arr));
+            
+            arr = new int[] { 22, 21, 35, 20, 1, 8, 11, 16, 2, 2, 4, 2 };
+            Console.WriteLine(answerDisplay, string.Join(",", arr), calculateArraySum(arr));
         }
 
         static string calculateArraySum(int[] arr)
