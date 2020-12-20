@@ -16,6 +16,18 @@ namespace ArraySum
 
             arr = new int[] { 22, 21, 35, 20, 1, 8, 11, 16 };
             Console.WriteLine(answerDisplay, string.Join(",", arr), calculateArraySum(arr));
+            
+            arr = new int[] { 2, 2, 4, 2 };
+            Console.WriteLine(answerDisplay, string.Join(",", arr), calculateArraySum(arr));
+
+            arr = new int[] { 2, 2, 4, 2, 3 };
+            Console.WriteLine(answerDisplay, string.Join(",", arr), calculateArraySum(arr));
+            
+            arr = new int[] { 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 14, 17 };
+            Console.WriteLine(answerDisplay, string.Join(",", arr), calculateArraySum(arr));
+
+            arr = new int[] { 2, 3, 4, 5, 6, 7, 8, 9, 10, 12 };
+            Console.WriteLine(answerDisplay, string.Join(",", arr), calculateArraySum(arr));
         }
 
         static string calculateArraySum(int[] arr)
@@ -37,24 +49,21 @@ namespace ArraySum
             }
 
             var returnElement = result.ToList();
+            var originalArray = arr.ToList();
 
-            for (var i = 0; i < arr.Length; i++)
+            for (var i = 0; i < returnElement.Count; i++)
             {
-                var elementExisted = false;
-                for (var j = 0; j < returnElement.Count; j++)
+                for(var j = 0; j < originalArray.Count; j++)
                 {
-                    if (returnElement[j] == arr[i])
+                    if (returnElement[i] == originalArray[j])
                     {
-                        elementExisted = true;
+                        originalArray.RemoveAt(j);
+                        j--;
                         break;
                     }
                 }
-
-                if (!elementExisted)
-                {
-                    returnElement.Add(arr[i]);
-                }
             }
+            returnElement.AddRange(originalArray);
 
             return string.Join(",", returnElement);
         }
